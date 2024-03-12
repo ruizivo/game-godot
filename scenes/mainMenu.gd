@@ -1,6 +1,7 @@
 extends Node
 
-@onready var level_1 = $level1
+@onready var level_1 = $TextureRect/VBoxContainer/level1
+
 
 
 func _ready():
