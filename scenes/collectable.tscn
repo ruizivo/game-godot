@@ -1,0 +1,150 @@
+[gd_scene load_steps=22 format=3 uid="uid://dqx80gn4kdc8p"]
+
+[ext_resource type="Texture2D" uid="uid://d2inkbucyreqm" path="res://resources/Items/Fruits/Strawberry.png" id="1_fr2dw"]
+[ext_resource type="Script" path="res://scenes/collectable.gd" id="1_gjugh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrd6b"]
+atlas = ExtResource("1_fr2dw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o25c"]
+atlas = ExtResource("1_fr2dw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lppwj"]
+atlas = ExtResource("1_fr2dw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4v6h"]
+atlas = ExtResource("1_fr2dw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_viq7g"]
+atlas = ExtResource("1_fr2dw")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfmva"]
+atlas = ExtResource("1_fr2dw")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lduau"]
+atlas = ExtResource("1_fr2dw")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llm7v"]
+atlas = ExtResource("1_fr2dw")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivtb6"]
+atlas = ExtResource("1_fr2dw")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb2g4"]
+atlas = ExtResource("1_fr2dw")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4mhn"]
+atlas = ExtResource("1_fr2dw")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26r2r"]
+atlas = ExtResource("1_fr2dw")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rovbt"]
+atlas = ExtResource("1_fr2dw")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pltx"]
+atlas = ExtResource("1_fr2dw")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1eye"]
+atlas = ExtResource("1_fr2dw")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax4c7"]
+atlas = ExtResource("1_fr2dw")
+region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ny0dq"]
+atlas = ExtResource("1_fr2dw")
+region = Rect2(512, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xubha"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrd6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8o25c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lppwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4v6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_viq7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfmva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lduau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llm7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivtb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pb2g4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4mhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26r2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rovbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pltx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1eye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ax4c7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ny0dq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fjifu"]
+radius = 16.1245
+
+[node name="Collectable" type="Area2D"]
+script = ExtResource("1_gjugh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 1)
+scale = Vector2(2.4375, 2.125)
+sprite_frames = SubResource("SpriteFrames_xubha")
+autoplay = "default"
+frame_progress = 0.605704
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fjifu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

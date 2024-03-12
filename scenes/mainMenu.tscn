@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://caarlrhqy5bd5"]
+
+[ext_resource type="Script" path="res://scenes/mainMenu.gd" id="1_vsy1k"]
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_vsy1k")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1155.0
+offset_bottom = 644.0
+stretch_mode = 1
+
+[node name="level1" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = 85.0
+offset_right = -126.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_next = NodePath("../level2")
+focus_previous = NodePath("../level2")
+text = "level 1"
+
+[node name="level2" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 161.0
+offset_top = 80.0
+offset_right = 375.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_next = NodePath("../level1")
+focus_previous = NodePath("../level1")
+text = "level 2"
+
+[connection signal="pressed" from="level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="level2" to="." method="_on_level_2_pressed"]
