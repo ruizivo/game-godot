@@ -1,7 +1,33 @@
-[gd_scene load_steps=22 format=3 uid="uid://dqx80gn4kdc8p"]
+[gd_scene load_steps=30 format=3 uid="uid://dqx80gn4kdc8p"]
 
 [ext_resource type="Texture2D" uid="uid://d2inkbucyreqm" path="res://resources/Items/Fruits/Strawberry.png" id="1_fr2dw"]
 [ext_resource type="Script" path="res://scenes/collectable.gd" id="1_gjugh"]
+[ext_resource type="Texture2D" uid="uid://dvealojspavh8" path="res://resources/Items/Fruits/Collected.png" id="3_7boo8"]
+[ext_resource type="AudioStream" uid="uid://k7v6y74lyay7" path="res://retro-coin-03.wav" id="3_w4sq1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6eoi"]
+atlas = ExtResource("3_7boo8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlfxh"]
+atlas = ExtResource("3_7boo8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvu5y"]
+atlas = ExtResource("3_7boo8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l34de"]
+atlas = ExtResource("3_7boo8")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfguq"]
+atlas = ExtResource("3_7boo8")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kop1"]
+atlas = ExtResource("3_7boo8")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yrd6b"]
 atlas = ExtResource("1_fr2dw")
@@ -75,6 +101,29 @@ region = Rect2(512, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_j6eoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlfxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvu5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l34de")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfguq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kop1")
+}],
+"loop": false,
+"name": &"collect",
+"speed": 22.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_yrd6b")
 }, {
 "duration": 1.0,
@@ -136,15 +185,19 @@ radius = 16.1245
 [node name="Collectable" type="Area2D"]
 script = ExtResource("1_gjugh")
 
+[node name="coinFx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_w4sq1")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, 1)
 scale = Vector2(2.4375, 2.125)
 sprite_frames = SubResource("SpriteFrames_xubha")
+animation = &"collect"
 autoplay = "default"
-frame_progress = 0.605704
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_fjifu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

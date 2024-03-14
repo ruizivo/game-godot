@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://dhyhtm2fceal4"]
+[gd_scene load_steps=12 format=3 uid="uid://dhyhtm2fceal4"]
 
+[ext_resource type="AudioStream" uid="uid://c00esqiexsv34" path="res://its-time-for-an-adventure.wav" id="1_eixoj"]
 [ext_resource type="Script" path="res://GameManager.gd" id="1_r8l1p"]
 [ext_resource type="Texture2D" uid="uid://dilpegkofeadg" path="res://resources/Background/Gray.png" id="2_4h6kp"]
 [ext_resource type="Texture2D" uid="uid://tkpsrskhajcc" path="res://resources/Terrain/Terrain (16x16).png" id="3_ex4sh"]
@@ -579,6 +580,11 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_x87c0")
 
 [node name="Node" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_eixoj")
+volume_db = -10.196
+autoplay = true
 
 [node name="PauseMenu" parent="." instance=ExtResource("8_rqqj4")]
 
