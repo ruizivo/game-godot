@@ -4,6 +4,7 @@ extends Area2D
 @onready var game_manager = %GameManager
 @onready var finish = %Finish
 @onready var collision_shape_2d = $CollisionShape2D
+@onready var anim = $AnimatedSprite2D
 
 
 func _on_body_entered(body):
@@ -12,6 +13,7 @@ func _on_body_entered(body):
 	
 func OnPodeGanhar():
 	finish.visible = true
+	anim.play("show")
 	collision_shape_2d.set_deferred("disabled", false)
 
 func _on_ready():
